@@ -9,7 +9,7 @@ function PostForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
+    await axios.post(
       "/api/post",
       {
         title,
