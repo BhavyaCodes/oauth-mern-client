@@ -1,7 +1,12 @@
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const handleLogout = async () => {
+    const res = await axios.get("/api/logout");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link to="/" className="navbar-brand">
@@ -25,26 +30,15 @@ function Navbar() {
               Profile <span className="sr-only">(current)</span>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
-          </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
+        <div>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+        <div>
+          <Link to="/login" className="nav-link">
+            Login
+          </Link>
+        </div>
       </div>
     </nav>
   );
