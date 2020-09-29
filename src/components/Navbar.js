@@ -1,10 +1,15 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 
-function Navbar() {
+function Navbar({ isLoggedIn, setIsLoggedIn }) {
+  const cookies = new Cookies();
+
   const handleLogout = async () => {
     const res = await axios.get("/api/logout");
+    cookies.remove("isLoggedIn");
+    setIsLoggedIn(false);
   };
 
   return (
@@ -31,14 +36,17 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        <div>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-        <div>
-          <Link to="/login" className="nav-link">
-            Login
-          </Link>
-        </div>
+        {isLoggedIn ? (
+          <div>
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        ) : (
+          <div>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );
