@@ -3,7 +3,8 @@ module.exports = function (app) {
   app.use(
     ["/api", "/auth/google"],
     createProxyMiddleware({
-      target: "http://localhost:5000",
+      target: "https://oauth-mern-api.herokuapp.com/",
+      changeOrigin: true,
     })
   );
 };
