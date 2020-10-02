@@ -21,7 +21,6 @@ function App() {
       try {
         await axios.get("/api/isloggedin");
         setIsLoggedIn(true);
-        return cookies.set("isLoggedIn", "1");
       } catch (error) {
         setIsLoggedIn(false);
         cookies.remove("isLoggedIn");

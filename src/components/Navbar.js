@@ -42,9 +42,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
           </div>
         ) : (
           <div>
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
+            <Link to="/login">Login</Link>
           </div>
         )}
       </div>

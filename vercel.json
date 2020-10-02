@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/auth/google/callback/:match*",
+      "destination": "https://oauth-mern-api.herokuapp.com/auth/google/callback/:match*"
+    },
+    {
+      "source": "/api/:match*",
+      "destination": "https://oauth-mern-api.herokuapp.com/api/:match*"
+    }
+  ]
+}
